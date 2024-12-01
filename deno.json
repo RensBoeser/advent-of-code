@@ -1,6 +1,7 @@
 {
   "tasks": {
     "day1-2023": "deno run --allow-read ./2023/day-1/index.ts",
+    "day2-2023": "deno run --allow-read ./2023/day-2/index.ts",
     "day1-2024": "deno run --allow-read ./2024/day-1/index.ts"
   },
   "imports": {
