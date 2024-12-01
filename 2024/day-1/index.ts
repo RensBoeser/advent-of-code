@@ -1,5 +1,5 @@
 const parseInput = (): Array<Array<number>> => {
-  const inputText = Deno.readTextFileSync("day-1/input.txt")
+  const inputText = Deno.readTextFileSync("2024/day-1/input.txt")
   const pairs = inputText.split("\n")
 
   const numbers1: Array<number> = []
@@ -35,7 +35,7 @@ const part2 = (numbers1: Array<number>, numbers2: Array<number>): number => {
 }
 
 if (import.meta.main) {
-  console.log("Day 1: Historian Hysteria")
+  console.log("2024 Day 1: Historian Hysteria")
 
   const [numbers1, numbers2] = parseInput()
 
