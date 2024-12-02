@@ -39,13 +39,12 @@ const parseGame = (line: string): Game => {
   } satisfies Game
 }
 
-const part1 = () => {
+const part1 = (input: string) => {
   const MAX_RED_CUBES = 12
   const MAX_GREEN_CUBES = 13
   const MAX_BLUE_CUBES = 14
 
-  const inputText = Deno.readTextFileSync("2023/day-2/input.txt")
-  const lines = inputText.split("\n")
+  const lines = input.split("\n")
 
   const games = lines.map(parseGame)
 
@@ -80,9 +79,8 @@ interface MinimalCubesNeededToPlayGame {
   blue: number
 }
 
-const part2 = () => {
-  const inputText = Deno.readTextFileSync("2023/day-2/input.txt")
-  const lines = inputText.split("\n")
+const part2 = (input: string) => {
+  const lines = input.split("\n")
 
   const games = lines.map(parseGame)
 
@@ -111,9 +109,25 @@ const part2 = () => {
   }, 0)
 }
 
+const input = Deno.readTextFileSync("2023/day-2/input.txt")
+
 if (import.meta.main) {
   console.log("2023 Day 2: Cube Conundrum")
 
-  console.log("Result of part 1:", part1())
-  console.log("Result of part 2:", part2())
+  console.log("Result of part 1:", part1(input))
+  console.log("Result of part 2:", part2(input))
 }
+
+Deno.bench({
+  name: "2023 Day 2: Cube Conundrum - Part 1",
+  fn: () => {
+    part1(input)
+  },
+})
+
+Deno.bench({
+  name: "2023 Day 2: Cube Conundrum - Part 2",
+  fn: () => {
+    part2(input)
+  },
+})

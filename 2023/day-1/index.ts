@@ -1,6 +1,5 @@
-const part1 = (): number => {
-  const inputText = Deno.readTextFileSync("2023/day-1/input.txt")
-  const lines = inputText.split("\n")
+const part1 = (input: string): number => {
+  const lines = input.split("\n")
 
   const numbersPerLine = lines.map((line) => {
     const chars = line.split("")
@@ -25,9 +24,8 @@ const stringToDigitMap = {
   "nine": "9",
 }
 
-const part2 = (): number => {
-  const inputText = Deno.readTextFileSync("2023/day-1/input.txt")
-  const lines = inputText.split("\n")
+const part2 = (input: string): number => {
+  const lines = input.split("\n")
 
   const firstNumbers = lines.map((line) => {
     const chars = line.split("")
@@ -71,9 +69,25 @@ const part2 = (): number => {
   return numbers.reduce((acc, curr) => acc + parseInt(curr), 0)
 }
 
+const input = Deno.readTextFileSync("2023/day-1/input.txt")
+
 if (import.meta.main) {
   console.log("2023 Day 1: Trebuchet?!")
 
-  console.log("Result of part 1:", part1())
-  console.log("Result of part 2:", part2())
+  console.log("Result of part 1:", part1(input))
+  console.log("Result of part 2:", part2(input))
 }
+
+Deno.bench({
+  name: "2023 Day 1: Trebuchet?! - Part 1",
+  fn: () => {
+    part1(input)
+  },
+})
+
+Deno.bench({
+  name: "2023 Day 1: Trebuchet?! - Part 2",
+  fn: () => {
+    part2(input)
+  },
+})

@@ -18,11 +18,9 @@ const part1 = (numbers1: Array<number>, numbers2: Array<number>): number => {
   const sortedNumbers1 = numbers1.toSorted((a, b) => a - b)
   const sortedNumbers2 = numbers2.toSorted((a, b) => a - b)
 
-  const numberDisplacement = sortedNumbers1.map((num, index) =>
-    Math.abs(num - sortedNumbers2[index])
-  )
-
-  return numberDisplacement.reduce((acc, curr) => acc + curr, 0)
+  return sortedNumbers1.reduce((acc, curr, index) => {
+    return acc + Math.abs(curr - sortedNumbers2[index])
+  })
 }
 
 const part2 = (numbers1: Array<number>, numbers2: Array<number>): number => {
@@ -34,11 +32,25 @@ const part2 = (numbers1: Array<number>, numbers2: Array<number>): number => {
   return similarityScores.reduce((acc, curr) => acc + curr, 0)
 }
 
+const [numbers1, numbers2] = parseInput()
+
 if (import.meta.main) {
   console.log("2024 Day 1: Historian Hysteria")
-
-  const [numbers1, numbers2] = parseInput()
 
   console.log("Result of part 1:", part1(numbers1, numbers2))
   console.log("Result of part 2:", part2(numbers1, numbers2))
 }
+
+Deno.bench({
+  name: "2024 Day 1: Historian Hysteria - Part 1",
+  fn: () => {
+    part1(numbers1, numbers2)
+  },
+})
+
+Deno.bench({
+  name: "2024 Day 1: Historian Hysteria - Part 2",
+  fn: () => {
+    part2(numbers1, numbers2)
+  },
+})
