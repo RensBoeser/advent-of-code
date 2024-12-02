@@ -1,3 +1,8 @@
+Based on the challenges of Advent of Code:
+
+- [Advent of Code 2023](https://adventofcode.com/2023)
+- [Advent of Code 2024](https://adventofcode.com/2024)
+
 The project uses Deno to run the code snippets.
 
 # Install Deno
